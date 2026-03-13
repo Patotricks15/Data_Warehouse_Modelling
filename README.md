@@ -1,6 +1,6 @@
 # Data Warehouse Modelling Study 📊
 
-This repository is dedicated to my practical learning journey in data modelling for **Data Warehousing**. The goal is to evolve from simple implementations to complex architectures, documenting every step and concept learned along the way.
+This repository is dedicated to my practical learning journey in **Data Warehouse Modelling**. The goal is to evolve from simple dimensional implementations to complex architectures, documenting the design patterns and methodologies used to structure data for analytics.
 
 ## 🚀 Projects
 
@@ -14,38 +14,47 @@ Currently, the repository contains the following projects:
 
 ---
 
-## 🔝 Learning Path & Concepts
+## 🔝 Data Warehouse Modelling Concepts
 
-Each new project in this repository aims to consolidate previous knowledge and introduce new challenges. The path is structured by complexity levels:
+This repository serves as a roadmap for mastering different data architecture styles and modelling techniques:
 
-- **Dimensional Modelling**: Understanding Fact Tables and Dimension Tables.
-- **Star Schema**: Denormalized structure optimized for read performance.
-- **Technical Keys**: Use of Surrogate Keys vs Natural Keys for source system independence.
-- **B-Tree Indexes**: Why and how to index Foreign Keys in the Fact Table.
-- **Data Generation**: Creating Python scripts to simulate real-world business scenarios.
-- **Reliability & Scalability Fundamentals**: Understanding how systems handle growth and failures (DDIA Part 1).
-- **Snowflake Schema**: Normalized modelling when storage efficiency is a priority.
-- **SCD (Slowly Changing Dimensions)**: Implementing history tracking (mainly Type 2).
-- **Data Quality**: Monitoring dashboards and schema testing.
-- **Incremental Loading**: ETL strategies to process only new data (Watermarking & Idempotency).
-- **Column-Oriented Storage**: Deep dive into LSM-Trees vs B-Trees and why OLAP prefers columnar formats (Parquet, DuckDB).
-- **Schema Evolution & Encoding**: Handling data changes using Avro, Parquet, or JSON Schema (DDIA Chapter 4).
-- **ELT Techniques with dbt**: Transforming data within the Data Warehouse itself.
-- **Data Vault 2.0**: Introduction to agile modelling with Hubs, Links, and Satellites.
-- **Modern Data Stack Architecture**: Using Cloud tools (BigQuery, Snowflake, DuckDB).
-- **Advanced Optimization**: Partitioning (Horizontal scaling), Clustering, and Sharding strategies.
-- **Batch & Stream Processing**: Implementing Lambda/Kappa architectures and understanding "derived data" (DDIA Part 3).
-- **CDC (Change Data Capture)**: Using logs to synchronize databases (Event-driven data integration).
-- **Governance & Catalog**: Documenting and managing Data Lineage.
-- **Real-time Analytics**: Integration with data streams (Kafka/Flink) for low-latency insights.
-- **Consistency & Consensus**: Understanding distributed transactions and exactly-once processing.
+### 1. Dimensional Modelling (Kimball)
+- **Star Schema**: Denormalized structure optimized for read performance and simplicity.
+- **Snowflake Schema**: Normalized dimensional modelling for storage efficiency and data integrity.
+- **Fact Table Types**: 
+    - Transactional Facts (individual events).
+    - Periodic Snapshots (status over time).
+    - Accumulating Snapshots (processes with multiple milestones).
+- **Dimension Types**: 
+    - SCD (Slowly Changing Dimensions) Types 0, 1, 2, 3, 4, 6.
+    - Role-Playing Dimensions (e.g., multiple dates in one fact).
+    - Junk Dimensions (grouping miscellaneous flags).
+    - Degenerate Dimensions (stored directly in the fact table).
+
+### 2. Enterprise & Agile Modelling
+- **Inmon Methodology**: The Corporate Information Factory (CIF) and 3NF modelling.
+- **Data Vault 2.0**: Agile modelling for enterprise scale using Hubs, Links, and Satellites.
+- **Anchor Modelling**: Highly normalized (6NF) modelling for extreme flexibility.
+
+### 3. Advanced Design Patterns
+- **Bridging Tables**: Handling many-to-many relationships.
+- **Hierarchies**: Modelling parent-child relationships and ragged hierarchies.
+- **Technical Keys**: Surrogate Keys vs Natural Keys vs Business Keys.
+- **Semantic Layer**: Modelling definitions and metrics for end-user consumption.
+
+### 4. Physical Modelling & Performance
+- **Indexing Strategies**: B-Trees, Bitmap indexes, and their impact on query plans.
+- **Partitioning & Clustering**: Organizing data physically to optimize massive scans.
+- **Columnar Storage Impact**: How OLAP engines (Parquet, DuckDB) change modelling decisions compared to Row-based systems.
+- **Vector Modelling**: Structuring unstructured data for AI-powered semantic search (RAG).
 
 ---
 
 ## 🛠️ Tech Stack in Focus
-- **Languages**: Python, SQL.
-- **Databases**: SQLite, PostgreSQL, DuckDB.
-- **ETL/ELT Tools**: dbt, Airflow (Future).
+- **Modelling Specifications**: SQL (DDL), DBML.
+- **Storage Engines**: SQLite (Row), PostgreSQL (Hybrid), DuckDB (Columnar).
+- **Languages**: Python (for data generation and schema testing).
 
 ---
-*This repository serves as a portfolio of technical evolution in Data Engineering.*
+
+*This repository focuses on **how to structure data**, leaving transport and scheduling (ETL/Orchestration) to dedicated repositories.*
