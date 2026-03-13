@@ -9,6 +9,9 @@ Currently, the repository contains the following projects:
 1. **[Sales Warehouse](./sales_warehouse)**: Fundamental implementation of a Star Schema for sales data.
     - **Focus**: Star Schema, Surrogate Keys, B-Tree Indexes, Python + SQLite.
 
+2. **[Subscription Warehouse](./subscription_warehouse)**: Tracking user history with SCD Type 2 and Snowflake Schema.
+    - **Focus**: SCD (Slowly Changing Dimensions) Type 2, Snowflake Schema, DuckDB (Columnar Storage).
+
 ---
 
 ## 🔝 Learning Path & Concepts
